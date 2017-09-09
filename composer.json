@@ -1,0 +1,24 @@
+{
+    "name": "wangjie/w-jfrmae",
+    "description": "php frame",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wang jie",
+            "email": "929329186@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload":{
+        "files":[
+            "system/helper.php"
+        ],
+        "psr-4":{
+            "houdunwang\\":"houdunwang\\",
+            "app\\":"app\\",
+            "system\\":"system\\"
+
+        }
+    }
+}
