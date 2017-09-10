@@ -1,6 +1,5 @@
 <?php
 
 return[
-    //模板后缀
-    'suffix'=>'php',
+  'suffix'=>'php',//模板后缀
 ];

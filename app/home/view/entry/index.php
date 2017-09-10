@@ -14,9 +14,10 @@
 		<h1>Congratuations!</h1>
 		<p>You have successfully created your frame application</p>
 		<p>
-			<a href="www.baidu.com" class="btn btn-primary btn-lg">About Me</a>
+			<a href="https://www.baidu.com" class="btn btn-primary btn-lg">Learn more</a>
 		</p>
 	</div>
 </div>
+
 </body>
 </html>

@@ -4,43 +4,45 @@ namespace houdunwang\core;
 
 class Controller
 {
-    //private定义类的属性和方法，只能在类的内部使用
-    //赋给$url一个地址具体路径
-    //定义跳转地址属性
+    //private定义类的方法和属性，在类的内部使用
+    //window.history.back()意思是返回当前页面的上一页
+    //这里是将这个方法赋给$url只能在它的内部使用
     private $url = "window.history.back()";
 
     /**
      * 提示消息
-     * @param $message      消息内容
+     * @param $message		消息内容
      */
-    //public在类的内部、子类、外部都可以使用
-    //设定一个提示器
-    public function message($message){
-        //引入加载publie/view/message.php文件
-        //消息提示的模板文件
+    //public类的内部、外部、子类都可以使用
+    //这里是设定了一个消息提示方法
+    public function message($message)
+    {
+        //加载public/view/message.php文件
+        //这里引入的是消息提示的模板文件
         include "./view/message.php";
         exit;
     }
 
     /**
      * 跳转
-     * @param string $url   跳转地址
+     * @param string $url	跳转地址
      *
      * @return $this
      */
-    //public可在内部、子类、外部使用
-    //设定一个跳转器
-    public function setRedirect($url=''){
-        //empty检测字符串是否为空
-        //if判断$url里是否为空的处理方法
+    //public类的内部.外部.子类都可以使用
+    //这里是设定了一个跳转方法
+    public function setRedirect($url = '')
+    {
+        //empty（）的意思是判断变量是否为空
+        //这里if判断$url这个变量是否为空值
         if (empty($url)){
-            //window.history.back()返回到上一个页面
+            //如果$url这个变量为空时就返回当前页面的上一页
             $this->url = "window.history.back()";
         }else{
-            //location.href='$url'前往指定的页面
+            //如果$url这个变量有值时就还显示当前页面
             $this->url = "location.href='$url'";
         }
-        //跳转到首页面
+        //返回对象
         return $this;
     }
 }

@@ -10,15 +10,15 @@
 </head>
 <body style="background: #eee">
 <div class="jumbotron" style="text-align: center;margin-top: 200px">
-	<div class="container">
-		<h1><?php echo $message;?></h1>
-		<p>
+    <div class="container">
+        <h1><?php echo $message;?></h1>
+        <p>
             <a href="javascript:<?php echo $this->url?>;"><span id="time">3</span>秒之后自动跳转，如果没有跳转请点击这里...</a>
         </p>
-		<p>
-			<a class="btn btn-primary btn-lg">Learn more</a>
-		</p>
-	</div>
+        <p>
+            <a href="http://www.wubin.pro" class="btn btn-primary btn-lg">About Me</a>
+        </p>
+    </div>
 </div>
 <script>
     setTimeout(function(){
