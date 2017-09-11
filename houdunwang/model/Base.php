@@ -55,18 +55,21 @@ class Base
     //设定一个只能在内部使用的静态的方法
     private static function connect()
     {
+        //try{}catch{}的作用是用来处理异常
         try{
             //设定的变量名
-            $dsn = "mysql:host=localhost;dbname=c86";
-            $user = "root";
-            $password = "root";
+            $dsn = c('database.driver').":host=".c('database.host').";dbname=".c('database.dbname');//对象名
+            $user = c('database.user');//参数
+            $password = c('database.password');//方法
             //实例化对象名、参数、方法
             self::$pdo = new PDO($dsn,$user,$password);
             //设置字符集
             self::$pdo->query("set names utf8");
-            //设置错误属性
+            //设置错误属性，ATTR_ERRMODE是错误提示，ERRMODE_EXCEPTION异常模式
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            // 代码块接收到该异常，并创建一个包含异常信息的对象 ($a)
         }catch (PDOException $a){
+            //从exception对象调用$a->getMessage()输出来自该异常的错误消息
             throw new Exception($a->getMessage());
         }
     }
@@ -78,9 +81,11 @@ class Base
     //设定一个统计数据的方法
     public function count()
     {
+        //将这段统计数据的语句赋给$sql
         $sql = "select count(*) as total from {$this->table} {$this->where}";
-        //执行aql语句
+        //执行sql语句
         $data = $this->query($sql);
+        //将查询到的结果return出去
         return $data[0]['total'];
     }
 
@@ -123,10 +128,10 @@ class Base
         //rtrim（）移除字符串右侧的空白字符或其他预定义字符
         $fields = rtrim($fields.',');
         $values = rtrim($values.',');
-        //将的字段名、字段值写入赋给$sql
+        //将字段名、字段值写入赋给$sql
         $sql = "insert into {$this->table} ({$fields}) values ({$values})";
         //exec调用并执行
-        //这里就是执行$sql
+        //这里就是调用并执行$sql出去
         return $this->exec($sql);
     }
 
@@ -138,14 +143,15 @@ class Base
     public function update(array $data)
     {
         //empty是判断字符串是否为空
-        //如果没有指定where条件不允许更新数据
+        //if如果没有指定where条件不允许更新数据
         if (empty($this->where))
             return false;
         //存储字段名
         $fields = '';
-        //is_int判断变量类型是否为整数类型
-        //if判断字段值是否有引号和去逗号
+        //$data就相同于$k => $v数组
         foreach ($data as $k => $v){
+            //is_int判断变量类型是否为整数类型
+            //if判断字段值是否有引号和去逗号
             if (is_int($v)){
                 $fields.="$k=$v".',';
             }else{
@@ -157,7 +163,7 @@ class Base
         //将的字段名、字段值写入赋给$sql
         $sql = "update {$this->table} set {$fields} {$this->where}";
         //exec调用并执行
-        //这里就是执行$sql
+        //这里就是调用并执行$sql出去
         return $this->exec($sql);
     }
 
@@ -168,8 +174,10 @@ class Base
     //设定一个删除数据方法
     public function dastory($pk = '')
     {
+        //if判断$this->where或$pk有没有指定的where条件
         if (empty($this->where) || empty($pk)){
-            //如果没有指定where条件不允许更新数据
+            //empty判断一个变量或者表达式是否为空
+            //if如果没有指定where条件不允许更新数据
             if (empty($this->where)){
                 //获取主键
                 $priKey = $this->getPriKey();
@@ -179,9 +187,10 @@ class Base
             }
             //将它们写入传给$aql
             $aql = "delete from {$this->table} {$this->where}";
-            //执行sql语句
+            //跳出执行sql语句
             return $this->exec($aql);
         }else{
+            //跳出显示错误
             return false;
         }
     }
@@ -292,7 +301,7 @@ class Base
             $res = self::$pdo->query($sql);
             return $res->fetchAll(PDO::FETCH_ASSOC);
             }catch ( PDOException $a ) {
-            throw new Exception( $a->getMessage () );
+            throw new Exception( $a->getMessage ());
         }
     }
 

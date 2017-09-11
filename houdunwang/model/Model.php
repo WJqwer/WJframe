@@ -30,8 +30,6 @@ class Model
         //这里是将获取的静态方法类名赋给$class
         $class = get_called_class();
         //实例化Base里的方法
-
-
         return call_user_func_array([new Base($class),$name],$arguments);
     }
 }

@@ -5,12 +5,13 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "wang jie",
+            "name": "王杰",
             "email": "929329186@qq.com"
         }
     ],
     "require": {
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "gregwar/captcha": "dev-master"
     },
     "autoload":{
         "files":[

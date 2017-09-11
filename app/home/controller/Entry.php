@@ -10,7 +10,7 @@ class Entry extends Controller
 {
     public function index()
     {
-       dd( Article::find(1)->toArray());
+//       dd( Article::find(1)->toArray());
         $text = "flkdjglk";
         return View::with(compact('text'))->make();
     }
