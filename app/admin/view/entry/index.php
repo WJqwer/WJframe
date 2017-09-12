@@ -182,9 +182,9 @@
 </div>
 </div>
 <div class="master-footer" style="margin-top: 150px">
-    <a href="http://www.wubin.pro">武斌博客</a>
+    <a href="http://www.wubin.pro">蜡笔小新.新之助</a>
     <br>
-    Powered by wubin.pro v2.0 © 2017 http://www.wubin.pro
+    Anime support labixiaoxin.com v2.0 © 2017
 </div>
 </body>
 </html>

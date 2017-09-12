@@ -315,9 +315,9 @@ class Base
         try{
             $res = self::$pdo->exec($sql);
             //如果是添加的话，获取返回的自增主键值
-            if ($lastlnsertld = self::$pdo->lastlnsertld ()){
+            if ($lastlnsertld =self::$pdo->lastInsertId()){
                 //说明有返回的自增id
-                return$lastlnsertld;
+                return $lastlnsertld;
             }
             return $res;
         }catch ( PDOException $a ) {

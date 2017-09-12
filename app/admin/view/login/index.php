@@ -45,7 +45,7 @@
 <footer id="footer">
     <div class="text-center padder clearfix">
         <p>
-            <small>蜡笔小新：wubin.mail@foxmail.com<br>&copy; 2017</small>
+            <small>蜡笔小新：Anime support labixiaoxin.com<br>&copy; 2017</small>
         </p>
     </div>
 </footer>

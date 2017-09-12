@@ -49,24 +49,28 @@ class Admin extends Model
     /**
      * 修改密码
      */
+    //public类的内部、外部、子类都可以使用
+    //这里设定一个修改密码的方法
     public function edit($data)
     {
+        //dd($data);die;
         //获取id
         $id=$data["admin_id"];
         //用户名
         $username=$data["username"];
-        //密码
+        //新密码
         $password=$data["password"];
-        //二次密码
+        //再次确认新密码
         $pwd=$data["pwd"];
         //旧密码
         $oldpwd = $data["oldpassword"];
         //验证码
-//        $captcha = $data["captcha"];
+        //$captcha = $data["captcha"];
         //判断是否输入了用户名
         if (!trim($username)) return ["code" => 0, "msg" => "请输入用户名"];
         //查找密码
         $info=$this->find($id)->toArray();
+        //dd($info);die;
         //判断旧密码
         if (!password_verify($oldpwd, $info["adminPwd"])) return ["code" => 0, "msg" => "旧密码不正确"];
         //判断是否输入了密码
@@ -74,16 +78,16 @@ class Admin extends Model
         //判断是否输入了确认密码
         if (!$pwd) return ["code" => 0, "msg" => "请输入确认密码"];
         //判断是否输入了验证码
-//        if (!trim($captcha)) return ["code" => 0, "msg" => "请输入验证码"];
+        //if (!trim($captcha)) return ["code" => 0, "msg" => "请输入验证码"];
         //判断两次密码是否一致
         if($data["password"]!=$data["pwd"]) return ["code"=>0,"msg"=>"两次密码不一样"];
-        //        比对验证码，用户输入的验证码是否正确
-//        if ($captcha!= strtolower($_SESSION["phrase"])) return ["code" => 0, "msg" => "验证码不正确"];
+        //比对验证码，用户输入的验证码是否正确
+        //if ($captcha!= strtolower($_SESSION["phrase"])) return ["code" => 0, "msg" => "验证码不正确"];
         //重组数据
         //dd($this->findAll()->toArray());die;
         $info=[
             "adminUser"=>$username,
-            "admin_pwd"=>password_hash($password,PASSWORD_DEFAULT),
+            "adminPwd"=>password_hash($password,PASSWORD_DEFAULT),
         ];
         //执行修改
         $res=$this->where("adminId={$id}")->update($info);

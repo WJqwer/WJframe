@@ -14,7 +14,10 @@ class Login extends Controller
      * 登录管理登录页面
      */
     public function index()
+
     {
+//                    dd(password_hash('admin88',PASSWORD_DEFAULT));
+//die;
         if (IS_POST){
             //先生成一个加密之后的密码，手动写入数据库中
 //            dd(password_hash('admin88',PASSWORD_DEFAULT));

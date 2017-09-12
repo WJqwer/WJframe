@@ -158,14 +158,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">密码</label>
+                            <label for="" class="col-sm-2 control-label">新密码</label>
                             <div class="col-sm-10">
                                 <input type="password" name="password" class="form-control" placeholder="" value="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="" class="col-sm-2 control-label">确认密码</label>
+                            <label for="" class="col-sm-2 control-label">再次确认新密码</label>
                             <div class="col-sm-10">
                                 <input type="password" name="pwd" class="form-control" placeholder="" value="">
                             </div>
@@ -198,9 +198,9 @@
 </div>
 </div>
 <div class="master-footer" style="margin-top: 150px">
-    <a href="http://www.wubin.pro">武斌博客</a>
+    <a href="http://www.baidu.com">蜡笔小新.新之助</a>
     <br>
-    Powered by wubin.pro v2.0 © 2017 http://www.wubin.pro
+    Anime support labixiaoxin.com v2.0 © 2017
 </div>
 </body>
 </html>
