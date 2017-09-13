@@ -51,7 +51,7 @@ class Admin extends Model
      */
     //public类的内部、外部、子类都可以使用
     //这里设定一个修改密码的方法
-    public function edit($data)
+    public function changePass($data)
     {
         //dd($data);die;
         //获取id
@@ -77,14 +77,8 @@ class Admin extends Model
         if (!$password) return ["code" => 0, "msg" => "请输入密码"];
         //判断是否输入了确认密码
         if (!$pwd) return ["code" => 0, "msg" => "请输入确认密码"];
-        //判断是否输入了验证码
-        //if (!trim($captcha)) return ["code" => 0, "msg" => "请输入验证码"];
         //判断两次密码是否一致
         if($data["password"]!=$data["pwd"]) return ["code"=>0,"msg"=>"两次密码不一样"];
-        //比对验证码，用户输入的验证码是否正确
-        //if ($captcha!= strtolower($_SESSION["phrase"])) return ["code" => 0, "msg" => "验证码不正确"];
-        //重组数据
-        //dd($this->findAll()->toArray());die;
         $info=[
             "adminUser"=>$username,
             "adminPwd"=>password_hash($password,PASSWORD_DEFAULT),
@@ -110,5 +104,4 @@ class Admin extends Model
         session_destroy();
         return ["code"=>1,"msg"=>"退出成功"];
     }
-
 }

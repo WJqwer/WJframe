@@ -14,7 +14,7 @@
 <body class="">
 <section id="content" class="m-t-lg wrapper-md animated fadeInDown">
     <div class="container aside-xxl">
-        <a class="navbar-brand block" href="http://wubin.pro" target="_blank">c86学生管理系统后台</a>
+        <a class="navbar-brand block" href="http://wubin.pro" target="_blank">蜡笔小新在等你</a>
         <section class="panel panel-default m-t-lg bg-white">
             <header class="panel-heading text-center">
                 <h4>登录</h4>

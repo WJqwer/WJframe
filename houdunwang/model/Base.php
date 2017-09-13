@@ -90,6 +90,16 @@ class Base
     }
 
     /**
+     * 排序
+     */
+    public function order($order)
+    {
+        //order by gid desc
+        $this->order = "order by".$order;
+        return $this;
+    }
+
+    /**
      * 获取制定字段
      */
     //public类的内部、外部、子类都可以使用
@@ -126,8 +136,8 @@ class Base
             }
         }
         //rtrim（）移除字符串右侧的空白字符或其他预定义字符
-        $fields = rtrim($fields.',');
-        $values = rtrim($values.',');
+        $fields = rtrim($fields,',');
+        $values = rtrim($values,',');
         //将字段名、字段值写入赋给$sql
         $sql = "insert into {$this->table} ({$fields}) values ({$values})";
         //exec调用并执行
@@ -172,7 +182,7 @@ class Base
      */
     //public类的内部、外部、子类都可以使用
     //设定一个删除数据方法
-    public function dastory($pk = '')
+    public function destory($pk = '')
     {
         //if判断$this->where或$pk有没有指定的where条件
         if (empty($this->where) || empty($pk)){

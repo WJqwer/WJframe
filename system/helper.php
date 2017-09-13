@@ -71,20 +71,25 @@ if (!function_exists('c'))
     }
 }
 
-if (!function_exists('u'))
-{
+if(!function_exists ('u')){
     /**
      * 跳转的u函数
-     * //？s=模块/控制器/方法
+     * //?s=模块/控制器/方法
      */
-    function u($url){
-        $info = explode('.',$url);
-        if (count($info)==2){
-            return "index.php?s=".MODULE."/".$info[0]."/".$info[1];
+    function u($url,$args = []){
+        //p($args);
+        //dd(http_build_query ($args));
+        //http_build_query将数组['aid'=1,'bid'=2]变成 aid=1&bid=2
+        $args = http_build_query ($args);
+        $info = explode ('.',$url);
+        //dd($info);
+        if(count ($info)==2){
+            return "index.php?s=".MODULE."/{$info[0]}/{$info[1]}" . "&{$args}";
         }
-        if (count($info)==1){
-            return "index.php?s=".MODULE."/".CONTROLLER."/{$info[0]}";
+        if(count ($info)==1){
+            return "index.php?s=".MODULE."/".CONTROLLER."/{$info[0]}". "&{$args}";
         }
-        return"index.php?s={$info[0]}/{$info[1]}/{$info[2]}";
+        return "index.php?s={$info[0]}/{$info[1]}/{$info[2]}". "&{$args}";
     }
 }
+
